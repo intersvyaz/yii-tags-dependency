@@ -2,27 +2,29 @@
 
 namespace Intersvyaz\Cache;
 
+use Serializable;
+
 /**
  * Class Dependency
  * @package TaggedCache
  */
-class TagsDependency implements \ICacheDependency
+class TagsDependency implements \ICacheDependency, Serializable
 {
     /**
      * List of tags
      * Array of string or Tag[]
      * @var string[]
      */
-    public $tags = [];
+    private $tags = [];
     /**
      * List of tags versions
      * @var string[]
      */
-    public $versions = [];
+    private $versions = [];
     /**
      * @var string name cache component
      */
-    public $cacheName;
+    private $cacheName;
     /**
      * @var \CCache current cache component for store tags
      */
@@ -126,5 +128,26 @@ class TagsDependency implements \ICacheDependency
         }
 
         return $this->cache;
+    }
+
+    /**
+     * String representation of object
+     * @link http://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     */
+    public function serialize()
+    {
+        return serialize([$this->tags, $this->versions, $this->cacheName]);
+    }
+
+    /**
+     * Constructs the object
+     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized The string representation of the object.
+     * @return void
+     */
+    public function unserialize($serialized)
+    {
+        list($this->tags, $this->versions, $this->cacheName) = unserialize($serialized);
     }
 }
