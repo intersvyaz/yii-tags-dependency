@@ -1,14 +1,8 @@
-yii-cache-tag-dependency
-========================
-
-[![Build Status](https://travis-ci.org/intersvyaz/yii-cache-tag-dependency.svg)](https://travis-ci.org/intersvyaz/yii-cache-tag-dependency)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/intersvyaz/yii-cache-tag-dependency/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/intersvyaz/yii-cache-tag-dependency/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/intersvyaz/yii-cache-tag-dependency/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/intersvyaz/yii-cache-tag-dependency/?branch=master)
+# yii-tags-dependency
 
 Verification of the cache relevance based on Dependency mechanism of Yii framework and tags, which are also stored in cache
 
 Based on idea of Косыгин Александр < http://habrahabr.ru/users/kosalnik/ > described at http://habrahabr.ru/post/159079/
-
 
 ## Installation
 
