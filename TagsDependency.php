@@ -54,8 +54,8 @@ class TagsDependency implements \ICacheDependency, Serializable
     public function getHasChanged()
     {
         $currentVersions = $this->getTagsVersions(true);
-
-        return !empty(array_diff_assoc($currentVersions, $this->versions));
+        $difference = array_diff_assoc($currentVersions, $this->versions);
+        return !empty($difference);
     }
 
     /**
