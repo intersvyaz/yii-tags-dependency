@@ -1,5 +1,5 @@
 {
-    "name": "intersvyaz/yii-cache-tag-dependency",
+    "name": "intersvyaz/yii-tags-dependency",
     "description": "Verification of the cache relevance based on Dependency mechanism of Yii framework and tags, which are also stored in cache",
     "minimum-stability": "stable",
     "license": "MIT",
