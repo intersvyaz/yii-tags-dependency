@@ -54,8 +54,7 @@ class TagsDependency implements \ICacheDependency, Serializable
     public function getHasChanged()
     {
         $currentVersions = $this->getTagsVersions(true);
-        $difference = array_diff_assoc($currentVersions, $this->versions);
-        return !empty($difference);
+        return !empty(array_diff_assoc($currentVersions, $this->versions));
     }
 
     /**
@@ -106,7 +105,7 @@ class TagsDependency implements \ICacheDependency, Serializable
      */
     private function getTagPrefixedName($tag)
     {
-        return '@' . get_class() . '::' . (string)$tag;
+        return '@' . self::class . '::' . (string)$tag;
     }
 
     /**

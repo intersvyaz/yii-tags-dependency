@@ -9,6 +9,11 @@ class TagsDependencyTest extends PHPUnit_Framework_TestCase
         \Yii::app()->cache->flush();
     }
 
+    public function setUp()
+    {
+        \Yii::app()->cache->flush();
+    }
+
     public function testSingleTagDependency()
     {
         /** @var \CCache $cache */

@@ -11,24 +11,15 @@ require_once(__DIR__ . '/../vendor/yiisoft/yii/framework/yii.php');
 
 $config = [
     'basePath' => __DIR__ . '/runtime',
-    'aliases' => [
-        'fakes' => __DIR__ . '/fakes',
-        'helpers' => __DIR__ . '/helpers',
-    ],
-    'import' => [
-        'fakes.*',
-        'helpers.*'
-    ],
     'components' => [
+        'db' => [
+            'connectionString' => 'sqlite::memory:',
+        ],
         'cache' => [
             'class' => 'system.caching.CFileCache',
-            'cachePath' => __DIR__.'/runtime',
+            'cachePath' => __DIR__ . '/runtime'
         ],
     ],
 ];
 
 Yii::createWebApplication($config);
-
-// fix Yii's autoloader (https://github.com/yiisoft/yii/issues/1907)
-Yii::$enableIncludePath = false;
-Yii::import('fakes.*');
