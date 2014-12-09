@@ -1,8 +1,9 @@
 <?php
+namespace Intersvyaz\Cache\tests;
 
 use Intersvyaz\Cache\TagsDependency;
 
-class TagsDependencyTest extends PHPUnit_Framework_TestCase
+class TagsDependencyTest extends \PHPUnit_Framework_TestCase
 {
     public function tearDown()
     {
@@ -43,6 +44,20 @@ class TagsDependencyTest extends PHPUnit_Framework_TestCase
 
         (new TagsDependency([$tags[0]]))->deleteTags();
         $this->assertFalse($cache->get($key));
+    }
 
+    public function testClearTags()
+    {
+        $dependency = new TagsDependency(['A']);
+        $dependency->evaluateDependency();
+        $this->assertFalse($dependency->getHasChanged());
+        TagsDependency::clearTags(['A']);
+        $this->assertTrue($dependency->getHasChanged());
+
+        $dependency = new TagsDependency(['A', 'B', 'C']);
+        $dependency->evaluateDependency();
+        $this->assertFalse($dependency->getHasChanged());
+        TagsDependency::clearTags(['A']);
+        $this->assertTrue($dependency->getHasChanged());
     }
 }

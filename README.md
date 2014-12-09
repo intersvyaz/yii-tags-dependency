@@ -34,7 +34,7 @@ $cache->set('cacheKey', 'cacheValue', 0, new TagsDependency(['A', 'B']));
 var_dump($cache->get('cacheKey'));
 
 // remove (invalidate) one or several tags
-(new TagsDependency(['A']))->deleteTags();
+TagsDependency::clearTags(['A']);
 
 // check if cached value is absent in cache
 var_dump($cache->get('cacheKey'));

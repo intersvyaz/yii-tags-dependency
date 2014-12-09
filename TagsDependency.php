@@ -68,6 +68,15 @@ class TagsDependency implements \ICacheDependency, Serializable
     }
 
     /**
+     * @param array $tags
+     * @param string $cacheName
+     */
+    public static function clearTags(array $tags, $cacheName = 'cache')
+    {
+        (new self($tags, $cacheName))->deleteTags();
+    }
+
+    /**
      * @param bool $onlyFromCache
      * @return array
      */

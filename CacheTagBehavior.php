@@ -48,7 +48,7 @@ class CacheTagBehavior extends \CActiveRecordBehavior
      */
     public function clearTags($pk = null)
     {
-        $this->getDependency([get_class($this->owner), $this->getTagByPk($pk)])->deleteTags();
+        TagsDependency::clearTags([get_class($this->owner), $this->getTagByPk($pk)]);
     }
 
     /**
@@ -64,18 +64,9 @@ class CacheTagBehavior extends \CActiveRecordBehavior
         return get_class($this->owner) . '.' . implode('.', (array)$pk);
     }
 
-    /**
-     * @param array $tags
-     * @return TagsDependency
-     */
-    private function getDependency(array $tags)
-    {
-        return new TagsDependency($tags);
-    }
-
     private function internalCache($duration, $tag, $dependency = null)
     {
-        $dependency = isset($dependency) ? $dependency : $this->getDependency([$tag]);
+        $dependency = isset($dependency) ? $dependency : new TagsDependency([$tag]);
         return $this->owner->cache($duration, $dependency);
     }
 }
